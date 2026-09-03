@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ODOP Bharat — One District, One Product, Infinite Reach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --terracotta:#0E9E93;
+  --terracotta-dark:#0b7d74;
+  --olive:#3D7CB8;
+  --olive-dark:#2c5f8f;
+  --navy:#0B2A4A;
+  --navy-dark:#071c31;
+  --gold:#4C8FA6;
+  --gold-dark:#376b7d;
+  --cream:#F4F7FA;
+  --paper:#FFFFFF;
+  --ink:#101826;
+  --ink-soft:#55677c;
+  --line:#dde4ec;
+  --radius:10px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:'Work Sans',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  margin:0 0 .4em 0;
+  color:var(--navy);
+  letter-spacing:-0.01em;
+}
+p{line-height:1.6;color:var(--ink-soft);}
+a{color:inherit;text-decoration:none;}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--terracotta);
+  font-weight:500;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+img{max-width:100%;display:block;}
+button{font-family:'Work Sans',sans-serif;cursor:pointer;}
+
+/* ---------- NAV ---------- */
+header.site-nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(251,246,236,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1180px;margin:0 auto;padding:12px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand img{height:48px;width:auto;}
+.brand-logo{height:40px !important;width:auto;object-fit:contain;}
+.brand-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.15rem;color:var(--navy);}
+.nav-links{display:flex;gap:6px;align-items:center;}
+.nav-links button.mobile-only{display:none;}
+.nav-links button.nav-btn{
+  background:none;border:none;padding:9px 16px;border-radius:999px;
+  font-size:.92rem;font-weight:500;color:var(--ink-soft);transition:.2s;
+}
+.nav-links button.nav-btn:hover{background:#e8eef4;color:var(--ink);}
+.nav-links button.nav-btn.active{background:var(--navy);color:#fff;}
+.nav-cta{
+  background:var(--terracotta);color:#fff;border:none;
+  padding:10px 20px;border-radius:999px;font-weight:600;font-size:.88rem;
+  transition:.2s;
+}
+.nav-cta:hover{background:var(--terracotta-dark);}
+.hamburger{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:8px 10px;}
+
+@media(max-width:720px){
+  .brand img{height:36px;width:auto;}
+  .nav-links button.mobile-only{display:block;}
+}
+
+/* ---------- VIEWS ---------- */
+.view{display:none;}
+.view.active{display:block;animation:fadeIn .35s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+/* Cart grid responsive */
+.cart-grid{display:grid;grid-template-columns:1fr 360px;gap:24px;}
+@media(max-width:880px){.cart-grid{grid-template-columns:1fr;}}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  overflow:hidden;
+  min-height:640px;
+  display:flex;
+  align-items:center;
+  background:var(--navy-dark);
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('assets/images/carpet-weaving-loom.jpg');
+  background-size:cover;
+  background-position:center 22%;
+}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg, rgba(7,20,36,.95) 0%, rgba(7,20,36,.88) 34%, rgba(7,20,36,.62) 62%, rgba(7,20,36,.38) 100%),
+             linear-gradient(0deg, rgba(7,20,36,.55) 0%, rgba(7,20,36,0) 22%);
+}
+.hero-content{position:relative;z-index:2;width:100%;padding:112px 0 56px;}
+.hero-grid{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:end;
+}
+.hero .eyebrow{color:#7fe0d3;}
+.hero h1{font-size:clamp(2.3rem,4.2vw,3.25rem);line-height:1.08;margin-bottom:20px;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.3);}
+.hero h1 em{font-style:italic;color:#5fe0d1;}
+.hero p.lead{font-size:1.12rem;max-width:540px;margin-bottom:30px;color:#e5ecf2;}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{
+  padding:14px 26px;border-radius:999px;font-weight:600;font-size:.95rem;border:none;
+  display:inline-flex;align-items:center;gap:8px;transition:.2s;
+}
+.btn-primary{background:var(--terracotta);color:#fff;}
+.btn-primary:hover{background:var(--terracotta-dark);transform:translateY(-1px);}
+.btn-outline{background:transparent;border:1.5px solid var(--navy);color:var(--navy);}
+.btn-outline:hover{background:var(--navy);color:#fff;}
+.btn-outline.on-dark{border-color:rgba(255,255,255,.55);color:#fff;}
+.btn-outline.on-dark:hover{background:#fff;color:var(--navy);}
+
+.hero-panel{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-radius:20px;padding:30px 28px;color:#fff;
+}
+.hero-panel h4{
+  color:#fff;font-family:'Space Grotesk',sans-serif;font-size:.82rem;
+  text-transform:uppercase;letter-spacing:.1em;opacity:.85;margin-bottom:18px;
+}
+.hero-panel ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;}
+.hero-panel li{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;color:#dfe7ee;line-height:1.4;}
+.hero-panel li .dot{
+  flex:none;width:8px;height:8px;border-radius:50%;background:var(--terracotta);margin-top:6px;
+}
+.hero-panel li b{color:#fff;display:block;font-family:'Space Grotesk',sans-serif;font-size:.95rem;margin-bottom:2px;}
+.photo-credit{font-size:.68rem;color:rgba(255,255,255,.55);margin-top:14px;position:relative;z-index:2;}
+
+.stat-band{background:var(--paper);border-bottom:1px solid var(--line);}
+.stat-strip{
+  padding:28px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+}
+.stat-strip .stat b{font-family:'Space Grotesk',sans-serif;font-size:2.1rem;color:var(--navy);display:block;}
+.stat-strip .stat span{font-size:.85rem;color:var(--ink-soft);}
+
+/* ---------- DISTRICT / CRAFT GALLERY ---------- */
+.district-mosaic{
+  position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+}
+.tile{
+  border-radius:18px;padding:20px;color:#fff;min-height:220px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  box-shadow:0 12px 24px -14px rgba(0,0,0,.35);
+  position:relative;overflow:hidden;background-size:cover;background-position:center;
+}
+.tile::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(11,20,34,.05) 32%, rgba(11,20,34,.78) 100%);
+}
+.tile-craft-1{background-image:url('assets/images/blue-pottery-artisan.jpg');background-position:center 30%;}
+.tile-craft-2{background-image:url('assets/images/woodcarving-tools.jpg');}
+.tile-craft-3{background-image:url('assets/images/handloom-rug-detail.jpg');}
+.tile-craft-4{background-image:url('assets/images/painted-plates.jpg');background-position:center 25%;}
+.tile .tile-icon,.tile .tile-label{position:relative;z-index:1;}
+.tile .tile-icon{font-size:1.5rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4));}
+.tile .tile-label{font-size:.9rem;font-weight:600;opacity:.98;}
+
+/* ---------- SECTIONS ---------- */
+.section{padding:80px 0;}
+.section-head{max-width:640px;margin-bottom:46px;}
+.section-head h2{font-size:2.2rem;}
+.two-col{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:start;}
+
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.service-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px;transition:.2s;
+}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 18px 34px -22px rgba(27,58,92,.35);}
+.service-icon{
+  width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;margin-bottom:16px;color:#fff;
+}
+.service-card h3{font-size:1.12rem;margin-bottom:8px;}
+.service-card p{font-size:.92rem;margin:0;}
+
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.step{position:relative;padding-top:10px;border-top:2px solid var(--line);}
+.step .num{
+  font-family:'JetBrains Mono',monospace;color:var(--terracotta);font-size:.85rem;font-weight:600;
+}
+.step h4{font-size:1rem;margin:8px 0 6px;}
+.step p{font-size:.88rem;}
+
+.about-band{
+  color:#fff;border-radius:24px;padding:56px;margin:0 28px;
+  max-width:1124px;margin-inline:auto;
+  background-image:
+    linear-gradient(100deg, rgba(11,42,74,.96) 0%, rgba(11,42,74,.93) 42%, rgba(11,42,74,.74) 70%, rgba(11,42,74,.55) 100%),
+    url('assets/images/artisan-terracotta-woodcraft.jpg');
+  background-size:cover;
+  background-position:center right;
+}
+.about-band h2{color:#fff;}
+.about-band p{color:#d8e0e8;}
+.about-band .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:34px;}
+.about-band .pillar b{display:block;font-family:'Space Grotesk',sans-serif;font-size:1.05rem;margin-bottom:6px;color:var(--gold);}
+.about-band .pillar p{font-size:.86rem;color:#c9d3dc;margin:0;}
+
+.cta-band{
+  text-align:center;padding:80px 0;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(120deg, var(--navy-dark) 0%, var(--navy) 55%, var(--terracotta-dark) 130%);
+}
+.cta-band h2{font-size:2.1rem;color:#fff;}
+.cta-band .btn-outline{border-color:rgba(255,255,255,.55);color:#fff;}
+.cta-band .btn-outline:hover{background:#fff;color:var(--navy);}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:#071c31;color:#d6e2ec;padding:54px 0 28px;margin-top:40px;
+}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;}
+footer h4{color:#fff;font-size:.95rem;margin-bottom:14px;}
+footer .brand-name{color:#fff;}
+footer p, footer a{color:#8fa3b8;font-size:.88rem;}
+footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;}
+footer a:hover{color:#fff;}
+.footer-bottom{
+  border-top:1px solid #1a3350;margin-top:40px;padding-top:20px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  font-size:.78rem;color:#6f85a0;
+}
+
+/* ---------- FORMS ---------- */
+.form-shell{
+  background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:44px;
+  max-width:760px;margin:0 auto;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+.form-row.full{grid-template-columns:1fr;}
+label{display:block;font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:6px;}
+input,select,textarea{
+  width:100%;padding:12px 14px;border-radius:10px;border:1.4px solid var(--line);
+  font-family:'Work Sans',sans-serif;font-size:.94rem;background:#fbfdff;color:var(--ink);
+}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--terracotta);outline-offset:1px;border-color:var(--terracotta);}
+textarea{resize:vertical;min-height:90px;}
+.hint{font-size:.78rem;color:var(--ink-soft);margin-top:20px;}
+.chip-select{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{
+  padding:8px 14px;border-radius:999px;border:1.4px solid var(--line);font-size:.84rem;
+  background:#fbfdff;transition:.15s;
+}
+.chip.picked{background:var(--olive);color:#fff;border-color:var(--olive);}
+
+.success-panel{
+  text-align:center;padding:60px 20px;max-width:560px;margin:0 auto;
+}
+.success-panel .badge{
+  width:64px;height:64px;border-radius:50%;background:var(--olive);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 20px;
+}
+.id-pill{
+  display:inline-block;margin-top:14px;padding:10px 20px;border-radius:10px;
+  background:var(--cream);border:1.4px dashed var(--terracotta);font-family:'JetBrains Mono',monospace;
+  color:var(--terracotta-dark);font-weight:600;
+}
+
+/* ---------- MARKETPLACE ---------- */
+.mp-toolbar{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:30px;
+}
+.tabs{display:flex;gap:8px;background:#e8eef4;padding:5px;border-radius:999px;}
+.tabs button{
+  border:none;background:none;padding:9px 18px;border-radius:999px;font-size:.86rem;font-weight:600;color:var(--ink-soft);
+}
+.tabs button.active{background:var(--navy);color:#fff;}
+.filters{display:flex;gap:10px;}
+.filters select{width:auto;padding:9px 12px;font-size:.85rem;}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.product-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+}
+.product-thumb{
+  height:170px;display:flex;align-items:flex-end;justify-content:flex-start;padding:10px;
+  background-size:cover;background-position:center;position:relative;
+}
+.product-thumb .badge{
+  width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.25);position:relative;z-index:1;
+}
+.product-body{padding:18px;}
+.product-body .district-tag{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--terracotta);
+}
+.product-body h4{font-size:1rem;margin:6px 0 4px;}
+.product-body p{font-size:.84rem;margin:0 0 12px;}
+.product-foot{display:flex;justify-content:space-between;align-items:center;}
+.price{font-weight:700;color:var(--navy);font-family:'Space Grotesk',sans-serif;}
+.buy-btn{background:var(--terracotta);color:#fff;border:none;padding:8px 16px;border-radius:999px;font-size:.8rem;font-weight:600;}
+.buy-btn:hover{background:var(--terracotta-dark);}
+
+/* ---------- DASHBOARD ---------- */
+.dash-header{
+  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+  background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:26px 30px;margin-bottom:34px;
+}
+.dash-id{display:flex;align-items:center;gap:16px;}
+.avatar{width:56px;height:56px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;}
+.dash-id b{font-size:1.1rem;color:var(--navy);display:block;}
+.dash-id span{font-size:.82rem;color:var(--ink-soft);}
+.status-pill{background:#e0f5f3;color:var(--olive-dark);padding:6px 14px;border-radius:999px;font-size:.78rem;font-weight:600;}
+.dash-header-actions{display:flex;align-items:center;gap:12px;}
+.logout-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  background:none;border:1px solid var(--line);color:var(--ink-soft);
+  padding:8px 15px;border-radius:999px;font-size:.85rem;font-weight:600;transition:.2s;
+}
+.logout-btn:hover{background:#e3f7f5;border-color:var(--terracotta);color:var(--terracotta-dark);}
+
+/* ---------- NAV ACCOUNT MENU ---------- */
+.nav-account{position:relative;}
+.account-toggle{
+  display:flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);
+  border-radius:999px;padding:6px 12px 6px 6px;transition:.2s;
+}
+.account-toggle:hover{background:#e8eef4;}
+.account-toggle .mini-avatar{
+  width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;
+  font-family:'Space Grotesk',sans-serif;
+}
+.account-toggle .caret{font-size:.65rem;color:var(--ink-soft);}
+.account-menu{
+  display:none;position:absolute;top:calc(100% + 8px);right:0;min-width:200px;
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 12px 30px rgba(27,58,92,.14);padding:8px;z-index:300;
+}
+.account-menu.open{display:block;}
+.account-menu .menu-name{padding:8px 10px 4px;font-size:.9rem;font-weight:600;color:var(--navy);}
+.account-menu .menu-sub{padding:0 10px 8px;font-size:.76rem;color:var(--ink-soft);border-bottom:1px solid var(--line);margin-bottom:6px;}
+.account-menu button{
+  width:100%;text-align:left;background:none;border:none;padding:9px 10px;border-radius:8px;
+  font-size:.86rem;color:var(--ink-soft);
+}
+.account-menu button:hover{background:#e8eef4;color:var(--ink);}
+.account-menu button.menu-logout{color:var(--terracotta-dark);font-weight:600;}
+.account-menu button.menu-logout:hover{background:#e3f7f5;}
+
+.feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.feature-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:30px;
+  display:flex;flex-direction:column;gap:14px;transition:.2s;text-align:left;border-left:5px solid var(--terracotta);
+}
+.feature-card:nth-child(2){border-left-color:var(--olive);}
+.feature-card:nth-child(3){border-left-color:var(--gold);}
+.feature-card:nth-child(4){border-left-color:var(--navy);}
+.feature-card:hover{transform:translateY(-3px);box-shadow:0 20px 36px -24px rgba(27,58,92,.4);}
+.feature-card .ficon{font-size:1.8rem;}
+.feature-card h3{font-size:1.15rem;margin-bottom:2px;}
+.feature-card p{font-size:.88rem;margin:0;}
+.feature-card .open-link{font-size:.82rem;font-weight:700;color:var(--terracotta);margin-top:auto;}
+
+/* ---------- MODALS ---------- */
+.modal-overlay{
+  display:none;position:fixed;inset:0;background:rgba(28,22,17,.55);z-index:500;
+  align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;
+}
+.modal-overlay.active{display:flex;}
+.modal-box{
+  background:var(--cream);border-radius:22px;max-width:760px;width:100%;padding:38px 40px 40px;
+  position:relative;box-shadow:0 30px 60px -20px rgba(0,0,0,.4);
+}
+.modal-close{
+  position:absolute;top:20px;right:20px;background:#fff;border:1px solid var(--line);
+  width:36px;height:36px;border-radius:50%;font-size:1rem;color:var(--ink-soft);
+}
+.modal-box .eyebrow{margin-bottom:6px;}
+
+/* scheme list */
+.scheme{
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px;
+}
+.scheme h4{font-size:1rem;margin-bottom:4px;}
+.scheme .tag{font-size:.72rem;font-family:'JetBrains Mono',monospace;color:var(--olive-dark);background:#e0f2f0;padding:3px 9px;border-radius:999px;margin-left:8px;}
+.scheme p{font-size:.86rem;margin:6px 0 0;}
+
+/* AI chat mock */
+.chat-box{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px;max-height:320px;overflow-y:auto;margin-bottom:14px;}
+.msg{max-width:80%;padding:11px 15px;border-radius:14px;font-size:.88rem;margin-bottom:10px;line-height:1.45;}
+.msg.user{background:var(--navy);color:#fff;margin-left:auto;border-bottom-right-radius:3px;}
+.msg.bot{background:#e8eef4;color:var(--ink);border-bottom-left-radius:3px;}
+.chat-input-row{display:flex;gap:10px;}
+.chat-input-row input{flex:1;}
+.chat-input-row button{background:var(--terracotta);color:#fff;border:none;padding:0 20px;border-radius:10px;font-weight:600;}
+.suggest-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.suggest-chip{background:#fff;border:1.3px solid var(--line);padding:7px 12px;border-radius:999px;font-size:.78rem;color:var(--ink-soft);}
+.suggest-chip:hover{border-color:var(--terracotta);color:var(--terracotta);}
+
+/* Brand studio */
+.bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+.bs-controls .form-row{margin-bottom:14px;}
+.swatches{display:flex;gap:10px;}
+.swatch{width:32px;height:32px;border-radius:50%;border:2px solid transparent;cursor:pointer;}
+.swatch.picked{border-color:var(--ink);}
+.logo-preview{
+  background:#fff;border:1.4px dashed var(--line);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;min-height:220px;padding:20px;
+}
+.logo-preview .mark{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.logo-preview .mark .icon{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;}
+.logo-preview .mark .name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.3rem;text-align:center;}
+
+/* Logistics */
+.ship-row{display:flex;justify-content:space-between;align-items:center;background:var(--paper);border:1px solid var(--line);padding:14px 18px;border-radius:12px;margin-bottom:10px;font-size:.86rem;}
+.ship-status{padding:5px 12px;border-radius:999px;font-size:.74rem;font-weight:700;}
+.ship-status.transit{background:#eaf2f8;color:var(--gold-dark);}
+.ship-status.delivered{background:#e0f5f3;color:var(--olive-dark);}
+.ship-status.processing{background:#e4ecf3;color:var(--navy);}
+.bars{display:flex;align-items:flex-end;gap:10px;height:130px;margin-top:16px;}
+.bar{flex:1;background:linear-gradient(180deg,var(--gold),var(--terracotta));border-radius:6px 6px 0 0;position:relative;}
+.bar span{position:absolute;bottom:-22px;left:0;right:0;text-align:center;font-size:.68rem;color:var(--ink-soft);}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:920px){
+  .hero-grid,.two-col,.bs-grid{grid-template-columns:1fr;}
+  .hero-panel{margin-top:8px;}
+  .card-grid,.steps,.about-band .pillars,.product-grid,.feature-grid,.district-mosaic{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+  .hamburger{display:block;}
+  .nav-cta,#cartBtn{display:none;}
+  .about-band{background-position:center 70%;}
+}
+@media(max-width:600px){
+  .hero{min-height:auto;}
+  .hero-content{padding:88px 0 40px;}
+  .hero-overlay{background:linear-gradient(180deg, rgba(7,20,36,.92) 0%, rgba(7,20,36,.88) 55%, rgba(7,20,36,.8) 100%);}
+  .hero-bg{background-position:center 30%;}
+  .hero h1{font-size:2.1rem;}
+  .stat-strip{grid-template-columns:repeat(2,1fr);}
+  .card-grid,.steps,.about-band .pillars,.product-grid,.feature-grid,.form-row,.district-mosaic{grid-template-columns:1fr;}
+  .tile{min-height:150px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .about-band{padding:34px 24px;background-position:center 80%;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <img src="image/ODOP.jpeg" alt="ODOP Bharat" class="logo">
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <button class="nav-btn active" data-view="home">Home</button>
+      <button class="nav-btn" data-view="marketplace">Marketplace</button>
+      <button class="nav-btn mobile-only" onclick="openEnterpriseForm();return false;">Register Your Business</button>
+      <button class="nav-btn mobile-only" onclick="openBuyerForm();return false;">Register as Buyer</button>
+      <button class="nav-btn mobile-only" onclick="proceedToCheckout();return false;">Order &amp; Payment</button>
+      <button class="nav-btn mobile-only" onclick="openCart();return false;">Cart</button>
+      <button class="nav-btn" data-view="register">Register</button>
+      <button class="nav-btn" data-view="dashboard">Dashboard</button>
+    </nav>
+    <button class="nav-cta" id="navCta" onclick="openEnterpriseForm()">Register Your Business</button>
+    <button class="nav-cta" id="navBuyer" style="margin-left:8px;" onclick="openBuyerForm()">Register as Buyer</button>
+    <button class="nav-cta" id="navOrder" style="margin-left:8px;" onclick="proceedToCheckout()">Order &amp; Payment</button>
+    <button class="nav-btn" data-view="cart" id="cartBtn" style="margin-left:12px;" onclick="openCart()">Cart (0)</button>
+    <div class="nav-account" id="navAccount" style="display:none;">
+      <button class="account-toggle" onclick="toggleAccountMenu()">
+        <span class="mini-avatar" id="navAvatar">?</span>
+        <span class="caret">▾</span>
+      </button>
+      <div class="account-menu" id="accountMenu">
+        <div class="menu-name" id="navMenuName">Your business</div>
+        <div class="menu-sub" id="navMenuSub">—</div>
+        <button onclick="goTo('dashboard');toggleAccountMenu(false)">Dashboard</button>
+        <button onclick="goTo('register');toggleAccountMenu(false)">Edit profile</button>
+        <button class="menu-logout" onclick="handleLogout()">Log out</button>
+      </div>
+    </div>
+    <button class="hamburger" onclick="toggleMobileNav()">☰</button>
+  </div>
+</header>
+
+<!-- ============ HOME ============ -->
+<main id="view-home" class="view active">
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">One District · One Product · Nationwide</span>
+          <h1>Every district makes<br> something <em>extraordinary.</em><br>We help it travel.</h1>
+          <p class="lead">ODOP Bharat is the digital home for India's district producers — artisans, MSMEs, self-help groups and cooperatives — bringing business identity, finance access, branding, logistics and AI guidance onto one platform.</p>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="openEnterpriseForm()">Create your business profile →</button>
+            <button class="btn btn-outline on-dark" onclick="goTo('marketplace')">Browse the marketplace</button>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <h4>Built for district enterprises</h4>
+          <ul>
+            <li><span class="dot"></span><div><b>Verified business identity</b>Profiles banks and buyers can trust.</div></li>
+            <li><span class="dot"></span><div><b>Finance &amp; scheme matching</b>Credit access without formal history.</div></li>
+            <li><span class="dot"></span><div><b>Branding &amp; export support</b>From packaging to international buyers.</div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stat-band">
+    <div class="wrap stat-strip">
+      <div class="stat"><b>766</b><span>Districts, each with a distinct product identity</span></div>
+      <div class="stat"><b>63M+</b><span>MSMEs across India's district economies</span></div>
+      <div class="stat"><b>$100B+</b><span>Untapped export potential in local clusters</span></div>
+      <div class="stat"><b>110M+</b><span>Workers in district-based enterprises &amp; SHGs</span></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap about-band">
+      <span class="eyebrow" style="color:var(--gold);">Who we are</span>
+      <h2>Business infrastructure, not another marketplace listing.</h2>
+      <p style="max-width:640px;">Producers already make remarkable products — what's missing is the connective tissue: a professional identity, access to credit, sharp branding, reliable logistics and someone answering the hard business questions at 9pm. ODOP Bharat brings all of it into one account, so a producer in any of India's 766 districts can register once and operate like a national brand.</p>
+      <div class="pillars">
+        <div class="pillar"><b>Identity</b><p>A verified digital business profile that banks, buyers and government schemes can trust.</p></div>
+        <div class="pillar"><b>Capital</b><p>Loan and government scheme matching, built for producers without formal credit history.</p></div>
+        <div class="pillar"><b>Craft</b><p>Professional branding — logos, packaging and photography — for products with real heritage.</p></div>
+        <div class="pillar"><b>Reach</b><p>Domestic and export market access, with logistics and compliance handled end to end.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What we offer</span>
+        <h2>Six tools. One producer account.</h2>
+      </div>
+      <div class="card-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background:var(--terracotta);">🪪</div>
+          <h3>Digital Business Profile</h3>
+          <p>A shareable profile, product catalogue and QR business card that gives every producer a professional front door.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:var(--olive);">🏦</div>
+          <h3>Finance &amp; Government Schemes</h3>
+          <p>Auto-matched loan options and scheme eligibility, so producers spend less time chasing paperwork.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:var(--gold);">🎨</div>
+          <h3>Brand Studio</h3>
+          <p>Logos, packaging and posters generated and refined for products that deserve to look as good as they are.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:var(--navy);">🚚</div>
+          <h3>Logistics &amp; Tracking</h3>
+          <p>Shipment tracking, warehousing support and delivery analytics from workshop to buyer's doorstep.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:var(--terracotta-dark);">🤖</div>
+          <h3>AI Business Assistant</h3>
+          <p>A 24/7 assistant in Indian languages for pricing, scheme guidance, demand forecasts and day-to-day decisions.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background:var(--olive-dark);">🌍</div>
+          <h3>Marketplace &amp; Export</h3>
+          <p>Domestic and international buyer discovery, with export documentation support built in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" style="color:var(--gold);">Crafts of the districts</span>
+        <h2>The hands behind the products.</h2>
+        <p style="max-width:640px;">Every district's product carries a story — a technique refined over generations, a family workshop, a cooperative of makers. ODOP Bharat exists to give this work the business infrastructure it has always deserved.</p>
+      </div>
+      <div class="district-mosaic">
+        <div class="tile tile-craft-1"><span class="tile-label">Hand-painted pottery &amp; ceramics</span></div>
+        <div class="tile tile-craft-2"><span class="tile-label">Traditional wood carving</span></div>
+        <div class="tile tile-craft-3"><span class="tile-label">Handloom weaving &amp; textiles</span></div>
+        <div class="tile tile-craft-4"><span class="tile-label">Heritage decorative crafts</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>From registration to your first shipment.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="num">01</span><h4>Register</h4><p>Tell us your district, business and the products you make.</p></div>
+        <div class="step"><span class="num">02</span><h4>Get discovered</h4><p>Your profile and catalogue go live for buyers and lenders to find.</p></div>
+        <div class="step"><span class="num">03</span><h4>Grow</h4><p>Use the dashboard to access finance, branding and AI guidance.</p></div>
+        <div class="step"><span class="num">04</span><h4>Sell &amp; ship</h4><p>List on the marketplace and let logistics tools handle delivery.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Your district already has the product.<br>Let's give it a business.</h2>
+      <div class="btn-row" style="justify-content:center;margin-top:24px;">
+        <button class="btn btn-primary" onclick="openEnterpriseForm()">Register your business</button>
+        <button class="btn btn-outline" onclick="goTo('dashboard')">See the dashboard</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ REGISTER ============ -->
+<main id="view-register" class="view">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head" style="margin:0 auto 40px;text-align:center;max-width:640px;">
+        <span class="eyebrow">Producer registration</span>
+        <h2>Set up your business profile</h2>
+        <p>This takes about three minutes. You'll get a business ID and land straight in your dashboard.</p>
+      </div>
+
+      <div class="form-shell" style="text-align:center;">
+        <div style="max-width:620px;margin:0 auto;">
+          <h3 style="margin-bottom:8px;font-size:1.15rem;">Register Your Business</h3>
+          <p style="margin-bottom:18px;color:var(--ink-soft);">To register as a producer / enterprise with ODOP Bharat, please use our official registration form. It opens in a new tab and takes about three minutes to complete.</p>
+          <div style="display:flex;justify-content:center;gap:12px;">
+            <a class="btn btn-primary" href="https://forms.gle/Qxaf4jSUY3YYUNXx7" target="_blank" rel="noopener noreferrer">Register Your Business</a>
+            <button class="btn btn-outline" onclick="goTo('home')">Back to home</button>
+          </div>
+          <p class="hint" style="margin-top:16px;">By using the official form you will receive a business ID and access to your dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ MARKETPLACE ============ -->
+<main id="view-marketplace" class="view">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Marketplace</span>
+        <h2>District products, national &amp; global buyers</h2>
+        <p>Every listing here is made by a registered district producer. Filter by category or explore what's shipping internationally.</p>
+      </div>
+
+      <div class="mp-toolbar">
+        <div class="tabs" id="mpTabs">
+          <button class="active" data-tab="domestic">Domestic buyers</button>
+          <button data-tab="international">International buyers</button>
+        </div>
+        <div class="filters">
+          <select id="categoryFilter" onchange="renderProducts()">
+            <option value="all">All categories</option>
+            <option value="Pottery">Pottery &amp; Terracotta</option>
+            <option value="Textiles">Handloom &amp; Textiles</option>
+            <option value="Food">Spices &amp; Food</option>
+            <option value="Crafts">Handicrafts</option>
+            <option value="Bamboo">Bamboo &amp; Cane</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ DASHBOARD ============ -->
+<main id="view-dashboard" class="view">
+  <section class="section">
+    <div class="wrap">
+
+      <div class="dash-header">
+        <div class="dash-id">
+          <div class="avatar" id="dashAvatar">?</div>
+          <div>
+            <b id="dashBizName">Register to see your business here</b>
+            <span id="dashDistrict">Complete your profile to unlock the dashboard</span>
+          </div>
+        </div>
+        <div class="dash-header-actions">
+          <span class="status-pill" id="dashStatus">Profile pending</span>
+          <button class="logout-btn" onclick="handleLogout()">⎋ Log out</button>
+        </div>
+      </div>
+
+      <div class="section-head">
+        <span class="eyebrow">Your toolkit</span>
+        <h2>Everything to run and grow your business</h2>
+      </div>
+
+      <div class="feature-grid">
+        <button class="feature-card" onclick="openModal('modal-finance')">
+          <span class="ficon">🏦</span>
+          <h3>Finance &amp; Government Schemes</h3>
+          <p>Check loan options and scheme eligibility matched to your business.</p>
+          <span class="open-link">View schemes →</span>
+        </button>
+
+        <button class="feature-card" onclick="openModal('modal-ai')">
+          <span class="ficon">🤖</span>
+          <h3>AI Business Assistant</h3>
+          <p>Ask about pricing, exports, schemes or what to produce next.</p>
+          <span class="open-link">Open assistant →</span>
+        </button>
+
+        <button class="feature-card" onclick="openModal('modal-brand')">
+          <span class="ficon">🎨</span>
+          <h3>Brand Studio</h3>
+          <p>Generate a logo, packaging or poster starting point for your brand.</p>
+          <span class="open-link">Design now →</span>
+        </button>
+
+        <button class="feature-card" onclick="openModal('modal-logistics')">
+          <span class="ficon">🚚</span>
+          <h3>Logistics Tracking &amp; Analytics</h3>
+          <p>Track shipments in transit and review your delivery performance.</p>
+          <span class="open-link">View shipments →</span>
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ CART VIEW ============ -->
+<main id="view-cart" class="view">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Your cart</span>
+        <h2>Your Cart</h2>
+        <p class="hint">Review items, adjust quantities, or proceed to payment.</p>
+      </div>
+
+      <div class="cart-grid" style="display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start;">
+        <div>
+          <div id="cartPageContent" class="form-shell">Loading cart…</div>
+
+          <div id="billingForm" style="margin-top:18px;background:var(--paper);padding:16px;border-radius:12px;border:1px solid var(--line);">
+            <h3 style="margin-top:0;margin-bottom:8px;">Billing / Buyer details</h3>
+            <p class="hint" style="margin-top:0;margin-bottom:12px;">Billing and contact details will be confirmed during Order &amp; Payment.</p>
+            <div style="display:grid;gap:10px;">
+              <input id="billing_fullname" placeholder="Full name" oninput="saveBillingFromForm()" style="padding:10px;border:1px solid var(--line);border-radius:8px;">
+              <input id="billing_email" placeholder="Email address" oninput="saveBillingFromForm()" style="padding:10px;border:1px solid var(--line);border-radius:8px;">
+              <input id="billing_phone" placeholder="Phone number" oninput="saveBillingFromForm()" style="padding:10px;border:1px solid var(--line);border-radius:8px;">
+              <input id="billing_address" placeholder="Address" oninput="saveBillingFromForm()" style="padding:10px;border:1px solid var(--line);border-radius:8px;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <input id="billing_city" placeholder="City" oninput="saveBillingFromForm()" style="padding:10px;border:1px solid var(--line);border-radius:8px;">
+                <input id="billing_state" placeholder="State" oninput="saveBillingFromForm()" style="padding:10px;border:1px solid var(--line);border-radius:8px;">
+              </div>
+              <input id="billing_pin" placeholder="PIN code" oninput="saveBillingFromForm()" style="padding:10px;border:1px solid var(--line);border-radius:8px;">
+              <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:6px;">
+                <button class="btn btn-outline" onclick="goTo('marketplace')">Continue shopping</button>
+                <button class="btn btn-primary" onclick="proceedToCheckout()">Complete Payment</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside id="orderSummary" style="background:var(--paper);padding:16px;border-radius:12px;border:1px solid var(--line);">
+          <h3 style="margin-top:0;margin-bottom:8px;">Order summary</h3>
+          <div id="orderSummaryContent">Loading…</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ MODALS ============ -->
+
+<!-- removed modal-cart; cart view will be a regular view below -->
+
+<div class="modal-overlay" id="modal-finance">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-finance')">✕</button>
+    <span class="eyebrow">Finance &amp; government schemes</span>
+    <h2>Financing matched to district producers</h2>
+    <p style="margin-bottom:22px;">Based on typical eligibility for registered district MSMEs and artisans. Final eligibility depends on your documentation and lender assessment.</p>
+
+    <div class="scheme">
+      <h4>Collateral-free MSME loans <span class="tag">Working capital</span></h4>
+      <p>Loans up to ₹2 crore without collateral, routed through partner banks and NBFCs for GST-registered producers and cooperatives.</p>
+    </div>
+    <div class="scheme">
+      <h4>Micro-enterprise credit <span class="tag">Up to ₹10L</span></h4>
+      <p>Small-ticket loans for individual artisans and micro-units, tiered by business stage — from starting out to scaling production.</p>
+    </div>
+    <div class="scheme">
+      <h4>Artisan &amp; craftsperson support scheme <span class="tag">Toolkits + credit</span></h4>
+      <p>Recognition, skill certification and starter toolkit assistance for traditional trade and craft producers.</p>
+    </div>
+    <div class="scheme">
+      <h4>First-time entrepreneur credit <span class="tag">Women / SC-ST priority</span></h4>
+      <p>Bank-facilitated loans for setting up a new greenfield enterprise, with priority processing for women and first-generation entrepreneurs.</p>
+    </div>
+    <div class="scheme">
+      <h4>State ODOP incentive grants <span class="tag">Varies by state</span></h4>
+      <p>Subsidies on branding, packaging and common facility centres, allocated by your state's ODOP nodal department.</p>
+    </div>
+
+    <div id="eligibilityFormWrap" style="margin-top:26px;border-top:1px solid var(--line);padding-top:24px;">
+      <h3 style="font-size:1.05rem;">Check your eligibility</h3>
+      <p style="font-size:.88rem;margin-bottom:18px;">Answer a few quick questions — this takes under a minute and gives you an instant, indicative match.</p>
+      <form id="eligibilityForm" onsubmit="checkEligibility(event)">
+        <div class="form-row">
+          <div>
+            <label for="elgStage">Business stage</label>
+            <select id="elgStage" required>
+              <option value="">Select</option>
+              <option value="idea">Not started yet / idea stage</option>
+              <option value="new">Operating under 1 year</option>
+              <option value="established">Operating 1–5 years</option>
+              <option value="scaling">Operating 5+ years</option>
+            </select>
+          </div>
+          <div>
+            <label for="elgGST">GST registered?</label>
+            <select id="elgGST" required>
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No, not yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="elgLoanSize">Funding needed</label>
+            <select id="elgLoanSize" required>
+              <option value="">Select</option>
+              <option value="small">Under ₹1 lakh</option>
+              <option value="medium">₹1 – 10 lakh</option>
+              <option value="large">₹10 lakh – 2 crore</option>
+            </select>
+          </div>
+          <div>
+            <label for="elgCategory">Producer category</label>
+            <select id="elgCategory" required>
+              <option value="">Select</option>
+              <option value="individual">Individual artisan / craftsperson</option>
+              <option value="women">Woman entrepreneur</option>
+              <option value="fpo">SHG / FPO / Cooperative</option>
+              <option value="msme">Registered MSME</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Check my eligibility →</button>
+      </form>
+      <div id="eligibilityResult" style="display:none;margin-top:20px;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-ai">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-ai')">✕</button>
+    <span class="eyebrow">AI business assistant</span>
+    <h2>Ask anything about your business</h2>
+    <div class="chat-box" id="chatBox">
+      <div class="msg bot">Namaste! I'm your business assistant, here 24/7 in your language. Ask me about pricing, exports, schemes or what's trending in your category.</div>
+      <div class="msg user">What should I charge for my terracotta planters?</div>
+      <div class="msg bot">Similar terracotta planters from eastern India are currently selling for ₹280–450 depending on size and glaze. Given your material and finishing quality, I'd suggest starting around ₹350 and testing demand on the marketplace.</div>
+    </div>
+    <div class="suggest-row">
+      <span class="suggest-chip" onclick="askAI(this)">Which government scheme fits me?</span>
+      <span class="suggest-chip" onclick="askAI(this)">Which countries import my product?</span>
+      <span class="suggest-chip" onclick="askAI(this)">What should I produce next season?</span>
+    </div>
+    <div class="chat-input-row" style="margin-top:14px;">
+      <input type="text" id="chatInput" placeholder="Type your question...">
+      <button onclick="sendChat()">Ask</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-brand">
+  <div class="modal-box" style="max-width:860px;">
+    <button class="modal-close" onclick="closeModal('modal-brand')">✕</button>
+    <span class="eyebrow">Brand studio · AI-assisted</span>
+    <h2>Describe it. We'll generate it.</h2>
+    <p style="margin-bottom:20px;">Tell the assistant about your business and what you make — it'll generate logo and poster concepts on the spot. No design brief or design team needed to get started.</p>
+
+    <div class="form-row full">
+      <div>
+        <label for="bsName">Business name</label>
+        <input type="text" id="bsName" value="Bankura Handicrafts">
+      </div>
+    </div>
+    <div class="form-row full">
+      <div>
+        <label for="bsContext">Tell us about your business & style <span style="font-weight:400;color:var(--ink-soft);">(the more specific, the better)</span></label>
+        <textarea id="bsContext" placeholder="e.g. We hand-throw terracotta planters and diyas in Bankura, West Bengal. We want something earthy and traditional, not too modern.">We hand-throw terracotta pottery and diyas in Bankura, West Bengal. Looking for an earthy, traditional feel.</textarea>
+      </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label>What do you want to generate?</label>
+        <div class="chip-select" id="bsMode">
+          <div class="chip picked" data-mode="logo">🔖 Logo concepts</div>
+          <div class="chip" data-mode="poster">🖼️ Poster concept</div>
+        </div>
+      </div>
+      <div>
+        <label>&nbsp;</label>
+        <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;" onclick="generateBrand()">✨ Generate with AI</button>
+      </div>
+    </div>
+
+    <div id="bsOutput" style="margin-top:26px;">
+      <p class="hint">Fill in the details above and click <strong>Generate with AI</strong> to see logo or poster concepts appear here.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-logistics">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-logistics')">✕</button>
+    <span class="eyebrow">Logistics &amp; analytics</span>
+    <h2>Shipments &amp; delivery performance</h2>
+
+    <div class="ship-row"><span>#ODP-4471 · Terracotta planters (24 units) → Mumbai</span><span class="ship-status transit">In transit</span></div>
+    <div class="ship-row"><span>#ODP-4468 · Handloom stoles (60 units) → Hamburg, Germany</span><span class="ship-status processing">Export docs processing</span></div>
+    <div class="ship-row"><span>#ODP-4460 · Bamboo baskets (40 units) → Bengaluru</span><span class="ship-status delivered">Delivered</span></div>
+    <div class="ship-row"><span>#ODP-4452 · Spice boxes (100 units) → Dubai, UAE</span><span class="ship-status delivered">Delivered</span></div>
+
+    <h4 style="margin-top:26px;">Shipments by month</h4>
+    <div class="bars">
+      <div class="bar" style="height:35%;"><span>Feb</span></div>
+      <div class="bar" style="height:50%;"><span>Mar</span></div>
+      <div class="bar" style="height:44%;"><span>Apr</span></div>
+      <div class="bar" style="height:70%;"><span>May</span></div>
+      <div class="bar" style="height:60%;"><span>Jun</span></div>
+      <div class="bar" style="height:88%;"><span>Jul</span></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <img src="image/ODOP.jpeg" alt="ODOP Bharat" class="logo">
+      <p>Building India's digital operating infrastructure for district enterprises — one producer at a time.</p>
+    </div>
+    <div>
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="#" onclick="goTo('home');return false;">Home</a></li>
+        <li><a href="#" onclick="goTo('marketplace');return false;">Marketplace</a></li>
+        <li><a href="#" onclick="goTo('register');return false;">Register your business</a></li>
+        <li><a href="#" onclick="goTo('dashboard');return false;">Dashboard</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Toolkit</h4>
+      <ul>
+        <li><a href="#" onclick="goTo('dashboard');openModal('modal-finance');return false;">Finance &amp; schemes</a></li>
+        <li><a href="#" onclick="goTo('dashboard');openModal('modal-ai');return false;">AI assistant</a></li>
+        <li><a href="#" onclick="goTo('dashboard');openModal('modal-brand');return false;">Brand studio</a></li>
+        <li><a href="#" onclick="goTo('dashboard');openModal('modal-logistics');return false;">Logistics tracking</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li>13, Institutional Area, Lodhi Road,<br>New Delhi 110003</li>
+        <li>Phone: 011 4410 1999</li>
+        <li>Email: connect@odopbharat.in</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 ODOP Bharat. All rights reserved.</span>
+    <span>Made for India's 766 districts.</span>
+  </div>
+</footer>
+
+<script>
+/* ---------------- NAV ---------------- */
+function goTo(viewName){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+viewName).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active', b.dataset.view===viewName));
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(viewName==='marketplace') renderProducts();
+}
+document.querySelectorAll('.nav-btn').forEach(b=>b.addEventListener('click',()=>{ if(b.dataset && b.dataset.view) goTo(b.dataset.view); }));
+function toggleMobileNav(){
+  const nav=document.getElementById('navLinks');
+  nav.style.display = nav.style.display==='flex' ? 'none' : 'flex';
+  nav.style.flexDirection='column';
+  nav.style.position='absolute';
+  nav.style.top='64px';nav.style.right='20px';
+  nav.style.background='#fff';nav.style.border='1px solid var(--line)';
+  nav.style.borderRadius='14px';nav.style.padding='10px';
+}
+
+/* ---------------- REGISTER FORM ---------------- */
+document.querySelectorAll('#productChips .chip').forEach(chip=>{
+  chip.addEventListener('click',()=>chip.classList.toggle('picked'));
+});
+
+let currentBusiness = null;
+
+function handleRegister(e){
+  e.preventDefault();
+  const name = document.getElementById('ownerName').value.trim();
+  const biz = document.getElementById('bizName').value.trim();
+  const district = document.getElementById('district').value.trim();
+  const state = document.getElementById('state').value;
+  const products = Array.from(document.querySelectorAll('#productChips .chip.picked')).map(c=>c.dataset.value);
+
+  const bizId = 'ODOP-' + Math.floor(100000 + Math.random()*899999);
+  currentBusiness = {name, biz, district, state, products, bizId};
+
+  document.getElementById('registerForm').style.display='none';
+  document.getElementById('successPanel').style.display='block';
+  document.getElementById('successName').textContent = name.split(' ')[0] || 'there';
+  document.getElementById('bizIdPill').textContent = 'Business ID: ' + bizId;
+
+  // populate dashboard
+  document.getElementById('dashBizName').textContent = biz || 'Your business';
+  document.getElementById('dashDistrict').textContent = (district ? district+', ' : '') + (state || '');
+  document.getElementById('dashStatus').textContent = 'Profile active';
+  document.getElementById('dashAvatar').textContent = (biz||'?').trim().charAt(0).toUpperCase();
+  document.getElementById('bsName').value = biz || 'Your Business';
+
+  // sign the user in: show account menu in the nav instead of the register CTA
+  document.getElementById('navCta').style.display = 'none';
+  document.getElementById('navAccount').style.display = 'block';
+  document.getElementById('navAvatar').textContent = (biz||'?').trim().charAt(0).toUpperCase();
+  document.getElementById('navMenuName').textContent = biz || 'Your business';
+  document.getElementById('navMenuSub').textContent = (district ? district+', ' : '') + (state || '');
+}
+
+function toggleAccountMenu(force){
+  const menu = document.getElementById('accountMenu');
+  if(typeof force === 'boolean'){ menu.classList.toggle('open', force); return; }
+  menu.classList.toggle('open');
+}
+// forms menu removed
+
+    document.addEventListener('click', (e)=>{
+  const accWrap = document.getElementById('navAccount');
+  if(accWrap && !accWrap.contains(e.target)) toggleAccountMenu(false);
+});
+
+function handleLogout(){
+  currentBusiness = null;
+  toggleAccountMenu(false);
+
+  // reset nav back to signed-out state
+  document.getElementById('navCta').style.display = '';
+  document.getElementById('navAccount').style.display = 'none';
+
+  // reset dashboard back to empty state
+  document.getElementById('dashBizName').textContent = 'Register to see your business here';
+  document.getElementById('dashDistrict').textContent = 'Complete your profile to unlock the dashboard';
+  document.getElementById('dashStatus').textContent = 'Profile pending';
+  document.getElementById('dashAvatar').textContent = '?';
+
+  // reset the registration form so a new/returning user can fill it in again
+  const form = document.getElementById('registerForm');
+  if(form){ form.reset(); form.style.display = ''; }
+  const success = document.getElementById('successPanel');
+  if(success) success.style.display = 'none';
+
+  goTo('home');
+}
+
+/* ---------------- MARKETPLACE ---------------- */
+const PRODUCTS = [
+  {name:'Hand-thrown Terracotta Planter Set', district:'Bankura, West Bengal', cat:'Pottery', price:'₹650', icon:'🏺', color:'var(--terracotta)', intl:false,
+   img:'https://commons.wikimedia.org/wiki/Special:FilePath/A%20small%20clay%20pot%20being%20shaped%20on%20a%20traditional%20potter%E2%80%99s%20wheel%20in%20India%2001.jpg?width=500'},
+  {name:'Bishnupur Baluchari Silk Saree', district:'Bankura, West Bengal', cat:'Textiles', price:'₹4,200', icon:'🧵', color:'var(--olive)', intl:true,
+   img:'https://commons.wikimedia.org/wiki/Special:FilePath/Baluchari%20saree%20of%20Bishnupur%20DSC06029.jpg?width=500'},
+  {name:'Kashmiri Saffron, 5g Tin', district:'Pulwama, J&K', cat:'Food', price:'₹899', icon:'🌸', color:'var(--gold)', intl:true,
+   img:'https://commons.wikimedia.org/wiki/Special:FilePath/Crocus%20sativus%20-%20Saffron%20crocus%20-%20Safran%2003.JPG?width=500'},
+  {name:'Channapatna Wooden Toy Set', district:'Ramanagara, Karnataka', cat:'Crafts', price:'₹520', icon:'🧸', color:'var(--navy)', intl:false,
+   img:'https://commons.wikimedia.org/wiki/Special:FilePath/Finished%20Channapatna%20toys.jpg?width=500'},
+  {name:'Majuli Bamboo Storage Basket', district:'Majuli, Assam', cat:'Bamboo', price:'₹380', icon:'🧺', color:'var(--terracotta-dark)', intl:false,
+   img:'https://commons.wikimedia.org/wiki/Special:FilePath/A%20bamboo%20basket%20big%20in%20size.JPG?width=500'},
+  {name:'Kutch Embroidered Wall Hanging', district:'Kutch, Gujarat', cat:'Crafts', price:'₹1,150', icon:'🪡', color:'var(--olive-dark)', intl:true,
+   img:'https://commons.wikimedia.org/wiki/Special:FilePath/Antique%20Kutch%20Embroidery.jpg?width=500'},
+  {name:'Malabar Black Pepper, 200g', district:'Wayanad, Kerala', cat:'Food', price:'₹310', icon:'🌶️', color:'var(--gold-dark)', intl:true,
+   img:'https://commons.wikimedia.org/wiki/Special:FilePath/Black%20Pepper%20%28Piper%20nigrum%29%20fruits.jpg?width=500'},
+  {name:'Moradabad Brass Table Lamp', district:'Moradabad, Uttar Pradesh', cat:'Crafts', price:'₹1,780', icon:'💡', color:'var(--navy-dark)', intl:true,
+   img:'https://commons.wikimedia.org/wiki/Special:FilePath/Brass%20Handicrafts%20of%20Moradabad.jpg?width=500'},
+  {name:'Pochampally Ikat Dupatta', district:'Yadadri, Telangana', cat:'Textiles', price:'₹1,450', icon:'🧣', color:'var(--terracotta)', intl:false,
+   img:'https://commons.wikimedia.org/wiki/Special:FilePath/Pochampalli%20Ikat%20saree.jpg?width=500'},
+];
+
+let activeTab = 'domestic';
+document.querySelectorAll('#mpTabs button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#mpTabs button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeTab = btn.dataset.tab;
+    renderProducts();
+  });
+});
+
+function renderProducts(){
+  const grid = document.getElementById('productGrid');
+  const cat = document.getElementById('categoryFilter').value;
+  let list = PRODUCTS.filter(p => activeTab==='international' ? p.intl : true);
+  if(cat!=='all') list = list.filter(p=>p.cat===cat);
+  if(list.length===0){ grid.innerHTML = '<p>No products match this filter yet.</p>'; return; }
+  let html = '';
+  list.forEach(p=>{
+    const idx = PRODUCTS.indexOf(p);
+    html += `
+    <div class="product-card">
+      <div class="product-thumb" style="background-image:url('${p.img}');">
+        <span class="badge" style="background:${p.color};">${p.icon}</span>
+      </div>
+      <div class="product-body">
+        <span class="district-tag">${p.district}</span>
+        <h4>${p.name}</h4>
+        <p>${activeTab==='international' ? 'Ships internationally, export-ready.' : 'Ships across India, 3–7 business days.'}</p>
+        <div class="product-foot">
+          <span class="price">${p.price}</span>
+          <button class="buy-btn" onclick="addToCart(${idx})">View &amp; buy</button>
+        </div>
+      </div>
+    </div>
+  `;
+  });
+  grid.innerHTML = html;
+}
+renderProducts();
+
+/* ---------------- ELIGIBILITY CHECKER ---------------- */
+function checkEligibility(e){
+  e.preventDefault();
+  const stage = document.getElementById('elgStage').value;
+  const gst = document.getElementById('elgGST').value;
+  const size = document.getElementById('elgLoanSize').value;
+  const category = document.getElementById('elgCategory').value;
+
+  const matches = [];
+
+  if(stage==='idea' || category==='individual'){
+    matches.push({name:'Artisan & craftsperson support scheme', why:'Suited to individuals starting or formalising a traditional craft business.'});
+  }
+  if(size==='small'){
+    matches.push({name:'Micro-enterprise credit (up to ₹10L)', why:'Matches your funding requirement for a small-ticket, low-documentation loan.'});
+  }
+  if(size==='large' && gst==='yes'){
+    matches.push({name:'Collateral-free MSME working capital loan', why:'GST registration and a larger funding need make you a fit for bank/NBFC-routed MSME credit.'});
+  }
+  if(category==='women'){
+    matches.push({name:'First-time entrepreneur credit', why:'Priority processing applies for women-led, first-generation businesses.'});
+  }
+  if(category==='fpo'){
+    matches.push({name:'State ODOP incentive grants', why:'SHGs, FPOs and cooperatives are typically prioritised for state branding & packaging subsidies.'});
+  }
+  if(gst==='no'){
+    matches.push({name:'GST registration support', why:'We can help you register for GST first — most formal credit lines require it.'});
+  }
+  if(matches.length===0){
+    matches.push({name:'Micro-enterprise credit (up to ₹10L)', why:'A general starting point based on the details provided.'});
+  }
+
+  const resultBox = document.getElementById('eligibilityResult');
+  resultBox.style.display = 'block';
+  resultBox.innerHTML = `
+    <div class="scheme" style="border-color:var(--olive);background:#eef5fa;">
+      <h4 style="color:var(--olive-dark);">✓ You have ${matches.length} indicative match${matches.length>1?'es':''}</h4>
+      <p>Based on what you shared. A loan officer will confirm final eligibility once your documents are reviewed.</p>
+    </div>
+    ${matches.map(m=>`<div class="scheme"><h4>${m.name}</h4><p>${m.why}</p></div>`).join('')}
+    <button class="btn btn-outline" style="width:100%;justify-content:center;margin-top:6px;" onclick="document.getElementById('eligibilityForm').style.display='block';document.getElementById('eligibilityResult').style.display='none';">Check again</button>
+  `;
+  document.getElementById('eligibilityForm').style.display='none';
+}
+
+/* ---------------- MODALS ---------------- */
+function openModal(id){ document.getElementById(id).classList.add('active'); }
+function closeModal(id){ document.getElementById(id).classList.remove('active'); }
+document.querySelectorAll('.modal-overlay').forEach(ov=>{
+  ov.addEventListener('click',e=>{ if(e.target===ov) ov.classList.remove('active'); });
+});
+
+/* ---------------- AI CHAT MOCK ---------------- */
+const AI_RESPONSES = {
+  "which government scheme fits me?":"Based on a micro-enterprise profile, you likely qualify for collateral-free MSME working capital loans and your state's ODOP packaging subsidy. Open the Finance & Schemes tool for details.",
+  "which countries import my product?":"For handicraft and textile categories from your region, the UAE, Germany and the US are currently the largest importers. I can help prep export documentation when you're ready.",
+  "what should i produce next season?":"Demand for festive-season home décor and gifting items typically rises 30-40% from September. Consider adding a smaller, gift-box-friendly variant of your bestseller."
+};
+function askAI(el){
+  addMsg(el.textContent, 'user');
+  const key = el.textContent.toLowerCase();
+  setTimeout(()=>addMsg(AI_RESPONSES[key] || "Here's what I found — let me pull together the specifics for you.", 'bot'), 400);
+}
+function sendChat(){
+  const input = document.getElementById('chatInput');
+  const val = input.value.trim();
+  if(!val) return;
+  addMsg(val,'user');
+  input.value='';
+  setTimeout(()=>addMsg("Good question — I'm matching this against current district and market data for you. In the full assistant, you'll get a tailored answer here.", 'bot'), 450);
+}
+function addMsg(text, cls){
+  const box = document.getElementById('chatBox');
+  const div = document.createElement('div');
+  div.className = 'msg '+cls;
+  div.textContent = text;
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+}
+
+/* ---------------- AI BRAND STUDIO ---------------- */
+document.querySelectorAll('#bsMode .chip').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    document.querySelectorAll('#bsMode .chip').forEach(c=>c.classList.remove('picked'));
+    chip.classList.add('picked');
+  });
+});
+
+const BRAND_KEYWORDS = [
+  {test:/pottery|terracotta|clay|diya|earthen/i, icon:'🏺', color:'#0E9E93', accent:'#0b7d74', mood:'earthy, hand-thrown'},
+  {test:/handloom|weav|silk|saree|sari|cotton|fabric|textile|dupatta/i, icon:'🧵', color:'#3D7CB8', accent:'#2c5f8f', mood:'woven, textured'},
+  {test:/spice|pepper|saffron|turmeric|masala|food|tea|coffee/i, icon:'🌶️', color:'#4C8FA6', accent:'#376b7d', mood:'warm, aromatic'},
+  {test:/bamboo|cane|basket|jute/i, icon:'🧺', color:'#0b7d74', accent:'#3D7CB8', mood:'natural, woven'},
+  {test:/brass|metal|jewel|silver|copper/i, icon:'✦', color:'#0B2A4A', accent:'#4C8FA6', mood:'polished, ornate'},
+  {test:/wood|toy|carve/i, icon:'🧸', color:'#0B2A4A', accent:'#4C8FA6', mood:'playful, rounded'},
+  {test:/embroider|thread|mirror work|applique/i, icon:'🪡', color:'#2c5f8f', accent:'#0E9E93', mood:'intricate, decorative'},
+];
+const PALETTE = ['#0E9E93','#3D7CB8','#0B2A4A','#4C8FA6'];
+
+function detectBrand(context){
+  const found = BRAND_KEYWORDS.find(k=>k.test.test(context));
+  return found || {icon:'✦', color:'#0B2A4A', accent:'#4C8FA6', mood:'crafted, distinctive'};
+}
+function districtFromContext(context){
+  const m = context.match(/in ([A-Z][a-zA-Z]+(?:,\s*[A-Z][a-zA-Z]+)?)/);
+  return m ? m[1] : null;
+}
+
+function generateBrand(){
+  const name = document.getElementById('bsName').value.trim() || 'Your Business';
+  const context = document.getElementById('bsContext').value.trim();
+  const mode = document.querySelector('#bsMode .chip.picked').dataset.mode;
+  const brand = detectBrand(context);
+  const district = districtFromContext(context);
+  const output = document.getElementById('bsOutput');
+
+  if(mode==='logo'){
+    const shapes = ['circle','rounded-square','ribbon'];
+    const cards = shapes.map((shape,i)=>{
+      const col = i===0 ? brand.color : PALETTE[(PALETTE.indexOf(brand.color)+i)%PALETTE.length];
+      const shapeStyle = shape==='circle' ? 'border-radius:50%;' : shape==='rounded-square' ? 'border-radius:20%;' : 'border-radius:6px;width:88px;height:56px;';
+      return `
+        <div class="logo-preview" style="min-height:190px;">
+          <div class="mark">
+            <div class="icon" style="background:${col};${shapeStyle}">${brand.icon}</div>
+            <div class="name" style="font-size:1.05rem;">${name}</div>
+            <div style="font-size:.72rem;color:var(--ink-soft);font-family:'JetBrains Mono',monospace;">Concept ${i+1} · ${brand.mood}</div>
+          </div>
+        </div>`;
+    }).join('');
+    output.innerHTML = `<div class="bs-grid" style="grid-template-columns:repeat(3,1fr);gap:16px;">${cards}</div>
+      <p class="hint" style="margin-top:16px;">Generated from: <em>"${context.slice(0,110)}${context.length>110?'…':''}"</em></p>`;
+  } else {
+    const tagline = district ? `Handcrafted in ${district}` : `Handcrafted, ${brand.mood}`;
+    output.innerHTML = `
+      <div style="background:${brand.color};border-radius:18px;padding:40px 32px;color:#fff;text-align:center;position:relative;overflow:hidden;">
+        <div style="font-size:2.4rem;margin-bottom:10px;">${brand.icon}</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.8rem;">${name}</div>
+        <div style="font-size:.95rem;opacity:.9;margin-top:8px;letter-spacing:.04em;">${tagline}</div>
+        <div style="margin-top:22px;display:inline-block;border:1.4px solid rgba(255,255,255,.6);padding:6px 16px;border-radius:999px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;">Shop the collection</div>
+      </div>
+      <p class="hint" style="margin-top:16px;">Generated from: <em>"${context.slice(0,110)}${context.length>110?'…':''}"</em> — regenerate with different wording for a new layout and palette.</p>`;
+  }
+}
+</script>
+
+<script>
+/* ---------- ODOP FORMS CONFIG & CART (end-of-body) ---------- */
+const ODOP_FORMS = {
+  enterpriseRegistration: "https://forms.gle/Qxaf4jSUY3YYUNXx7",
+  buyerRegistration: "https://forms.gle/7JJ8C3C7UtkCSXMN9",
+  orderPayment: "https://forms.gle/ojfRFn4Lz1PraFvp6"
+};
+
+const ORDER_FORM_CONFIG = {
+  formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSc2JX8syB6SOXAnQlwpVqN6BoD9RSslYfyjDQEPIT5OkxxM6Q/viewform",
+  fields: {
+    orderSummary: "entry.1000057",
+    totalAmount: "entry.1000027"
+  }
+};
+
+function openEnterpriseForm(){ window.open(ODOP_FORMS.enterpriseRegistration, '_blank', 'noopener'); }
+function openBuyerForm(){ window.open(ODOP_FORMS.buyerRegistration, '_blank', 'noopener'); }
+
+// Simple cart using localStorage. Reuses product data from PRODUCTS.
+const CART_KEY = 'odop_cart_v1';
+function getCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)) || []; }catch(e){return [];} }
+function saveCart(cart){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartCount(); }
+function clearCart(){ localStorage.removeItem(CART_KEY); updateCartCount(); }
+
+function updateCartCount(){
+  const btn = document.getElementById('cartBtn');
+  const count = getCart().reduce((s,i)=>s+i.quantity,0);
+  if(btn) btn.textContent = `Cart (${count})`;
+}
+
+function addToCart(productIndex){
+  const prod = PRODUCTS[productIndex];
+  if(!prod) return alert('Product not found');
+  const cart = getCart();
+  const existing = cart.find(i=>i.name===prod.name && i.district===prod.district);
+  if(existing){ existing.quantity += 1; }
+  else{ cart.push({ id: 'p'+productIndex, name: prod.name, price: prod.price, quantity:1, img:prod.img, district:prod.district }); }
+  saveCart(cart);
+  try{ renderCart(); }catch(e){}
+  alert('Added to cart');
+}
+
+function openCart(){ goTo('cart'); renderCartPage(); }
+
+function renderCart(){
+  const wrap = document.getElementById('cartContent');
+  const cart = getCart();
+  if(!wrap) return;
+  if(cart.length===0){ wrap.innerHTML = '<p>Your cart is empty.</p>'; const btn=document.getElementById('checkoutBtn'); if(btn) btn.disabled=true; return; }
+  const checkoutBtn = document.getElementById('checkoutBtn'); if(checkoutBtn) checkoutBtn.disabled=false;
+  let html = '<div style="display:grid;gap:12px;">';
+  let total = 0;
+  cart.forEach((it,idx)=>{
+    const priceNum = parseInt((it.price||'').replace(/[^0-9]/g,'')) || 0;
+    const line = priceNum * it.quantity; total += line;
+    html += `<div style="display:flex;gap:12px;align-items:center;border:1px solid var(--line);padding:10px;border-radius:10px;">
+      <img src="${it.img}" style="width:68px;height:48px;object-fit:cover;border-radius:6px;">
+      <div style="flex:1;"><div style="font-weight:700;">${it.name}</div><div style="font-size:.85rem;color:var(--ink-soft);">${it.district}</div></div>
+      <div style="text-align:right;min-width:120px;"><div style="font-weight:700;">₹${priceNum}</div>
+        <div style="margin-top:8px;display:flex;gap:6px;justify-content:flex-end;align-items:center;"><button class="btn" onclick="changeQty(${idx}, -1)">-</button><div style="min-width:22px;text-align:center;">${it.quantity}</div><button class="btn" onclick="changeQty(${idx}, 1)">+</button></div>
+        <div style="margin-top:8px;font-size:.92rem;color:var(--ink-soft);">Line: ₹${line}</div>
+        <div style="margin-top:8px;"><button class="btn btn-outline" onclick="removeItem(${idx})">Remove</button></div></div></div>`;
+  });
+  html += `<div style="border-top:1px solid var(--line);padding-top:12px;display:flex;justify-content:space-between;align-items:center;font-weight:700;">Total: <span>₹${total}</span></div>`;
+  html += '</div>';
+  wrap.innerHTML = html;
+}
+
+function renderCartPage(){
+  const wrap = document.getElementById('cartPageContent');
+  const summaryWrap = document.getElementById('orderSummaryContent');
+  const cart = getCart();
+  if(!wrap || !summaryWrap) return;
+  if(cart.length===0){
+    wrap.innerHTML = `<div style="text-align:center;padding:40px;"><h3>Your cart is empty</h3><p>You haven't added any products yet.</p><div style="margin-top:16px;"><button class="btn btn-primary" onclick="goTo('marketplace')">Browse Marketplace</button></div></div>`;
+    summaryWrap.innerHTML = `<div style="text-align:center;padding:20px;color:var(--ink-soft);">No items in your cart.</div>`;
+    try{ document.getElementById('cartPageCheckout').disabled = true; }catch(e){}
+    return;
+  }
+
+  // Build products list (left column)
+  let html = '<div style="display:grid;gap:12px;">';
+  let total = 0;
+  cart.forEach((it,idx)=>{
+    const priceNum = parseInt((it.price||'').replace(/[^0-9]/g,'')) || 0;
+    const line = priceNum * it.quantity; total += line;
+    html += `<div style="display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding:12px 0;">
+      <img src="${it.img}" style="width:88px;height:64px;object-fit:cover;border-radius:6px;">
+      <div style="flex:1;">
+        <div style="font-weight:700;">${it.name}</div>
+        <div style="font-size:.85rem;color:var(--ink-soft);">${it.district || ''}</div>
+        <div style="margin-top:8px;color:var(--ink-soft);">₹${priceNum} each</div>
+      </div>
+      <div style="width:220px;text-align:right;">
+        <div style="font-weight:700;">₹${priceNum}</div>
+        <div style="margin-top:8px;display:flex;gap:8px;justify-content:flex-end;align-items:center;">
+          <button class="btn" onclick="changeQty(${idx}, -1)">-</button>
+          <div style="min-width:32px;text-align:center;">${it.quantity}</div>
+          <button class="btn" onclick="changeQty(${idx}, 1)">+</button>
+        </div>
+        <div style="margin-top:8px;font-size:.92rem;color:var(--ink-soft);">Line Total: ₹${line}</div>
+        <div style="margin-top:8px;"><button class="btn btn-outline" onclick="removeItem(${idx});renderCartPage();">Remove</button></div>
+      </div>
+    </div>`;
+  });
+  html += '</div>';
+  wrap.innerHTML = html;
+
+  // Build order summary (right column)
+  let sumHtml = '<div style="display:flex;flex-direction:column;gap:8px;">';
+  cart.forEach(it=>{
+    const priceNum = parseInt((it.price||'').replace(/[^0-9]/g,'')) || 0;
+    const line = priceNum * it.quantity;
+    sumHtml += `<div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.04);padding:6px 0;"><div>${it.name} × ${it.quantity}</div><div>₹${line}</div></div>`;
+  });
+  sumHtml += `<div style="border-top:1px solid var(--line);padding-top:8px;font-weight:700;display:flex;justify-content:space-between;">Subtotal <span>₹${total}</span></div>`;
+  sumHtml += `<div style="display:flex;justify-content:space-between;font-weight:800;padding-top:6px;font-size:1.05rem;">Total <span>₹${total}</span></div>`;
+  sumHtml += `<div style="margin-top:12px;font-size:.92rem;color:var(--ink-soft);">Billing and contact details will be confirmed during Order &amp; Payment.</div>`;
+  sumHtml += '</div>';
+  summaryWrap.innerHTML = sumHtml;
+
+  // ensure checkout enabled
+  try{ document.querySelectorAll('#billingForm .btn-primary, #cartPageCheckout').forEach(b=>b.disabled=false); }catch(e){}
+
+  // load billing values into form
+  try{ loadBillingToForm(); }catch(e){}
+}
+
+function saveBillingFromForm(){
+  const data = {
+    fullname: (document.getElementById('billing_fullname')||{}).value || '',
+    email: (document.getElementById('billing_email')||{}).value || '',
+    phone: (document.getElementById('billing_phone')||{}).value || '',
+    address: (document.getElementById('billing_address')||{}).value || '',
+    city: (document.getElementById('billing_city')||{}).value || '',
+    state: (document.getElementById('billing_state')||{}).value || '',
+    pin: (document.getElementById('billing_pin')||{}).value || ''
+  };
+  try{ localStorage.setItem('odop_billing_details', JSON.stringify(data)); }catch(e){}
+}
+
+function loadBillingToForm(){
+  try{
+    const raw = localStorage.getItem('odop_billing_details');
+    if(!raw) return;
+    const d = JSON.parse(raw);
+    if(d.fullname) document.getElementById('billing_fullname').value = d.fullname;
+    if(d.email) document.getElementById('billing_email').value = d.email;
+    if(d.phone) document.getElementById('billing_phone').value = d.phone;
+    if(d.address) document.getElementById('billing_address').value = d.address;
+    if(d.city) document.getElementById('billing_city').value = d.city;
+    if(d.state) document.getElementById('billing_state').value = d.state;
+    if(d.pin) document.getElementById('billing_pin').value = d.pin;
+  }catch(e){}
+}
+
+function changeQty(index, delta){ const cart = getCart(); if(!cart[index]) return; cart[index].quantity += delta; if(cart[index].quantity < 1) cart[index].quantity = 1; saveCart(cart); try{ renderCart(); }catch(e){} try{ renderCartPage(); }catch(e){} }
+function removeItem(index){ const cart = getCart(); cart.splice(index,1); saveCart(cart); try{ renderCart(); }catch(e){} try{ renderCartPage(); }catch(e){} }
+
+function proceedToCheckout(){
+  const cart = getCart();
+  if(cart.length===0){ alert('Please add products to your cart before proceeding to payment.'); return; }
+
+  // Build order lines and total using existing cart data
+  const lines = cart.map(i=>{
+    const priceNum = parseInt((i.price||'').replace(/[^0-9]/g,'')) || 0;
+    const lineTotal = priceNum * i.quantity;
+    return `${i.name} × ${i.quantity} = ₹${lineTotal}`;
+  });
+  const total = cart.reduce((s,i)=>s + ((parseInt((i.price||'').replace(/[^0-9]/g,''))||0)*i.quantity),0);
+  const orderSummary = lines.join('\n') + `\n\nTotal = ₹${total}`;
+
+  // Store locally for reference
+  try{ localStorage.setItem('odop_order_initiated', JSON.stringify({ts:Date.now(), summary:orderSummary, total})); }catch(e){}
+
+  // Build prefilled Google Forms URL using verified field IDs
+  const base = ORDER_FORM_CONFIG.formUrl;
+  const params = new URLSearchParams();
+  params.set('usp','pp_url');
+  params.set(ORDER_FORM_CONFIG.fields.orderSummary, orderSummary);
+  params.set(ORDER_FORM_CONFIG.fields.totalAmount, String(total));
+  const prefilledUrl = base + '?' + params.toString();
+
+  // Open in new tab preserving the cart
+  window.open(prefilledUrl, '_blank', 'noopener,noreferrer');
+  alert('Order form opened in a new tab. Your cart is preserved locally until you complete the form.');
+}
+
+// initialize
+updateCartCount();
+</script>
+</body>
+</html>
