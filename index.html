@@ -420,6 +420,23 @@ textarea{resize:vertical;min-height:90px;}
 .suggest-chip{background:#fff;border:1.3px solid var(--line);padding:7px 12px;border-radius:999px;font-size:.78rem;color:var(--ink-soft);}
 .suggest-chip:hover{border-color:var(--terracotta);color:var(--terracotta);}
 
+/* ---------- ODOP ASSISTANT ---------- */
+.chatbot-launcher{position:fixed;right:24px;bottom:24px;z-index:450;display:flex;align-items:center;gap:10px;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:12px 18px 12px 13px;box-shadow:0 18px 38px rgba(7,28,49,.28);font-weight:700;transition:transform .2s,background .2s;}
+.chatbot-launcher:hover{background:var(--terracotta-dark);transform:translateY(-2px);}
+.chatbot-launcher-icon{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--terracotta);font-size:1.1rem;}
+.chatbot-panel{position:fixed;right:24px;bottom:88px;z-index:451;width:min(410px,calc(100vw - 32px));height:min(640px,calc(100vh - 112px));display:flex;flex-direction:column;background:var(--cream);border:1px solid var(--line);border-radius:20px;box-shadow:0 28px 70px rgba(7,28,49,.25);overflow:hidden;opacity:0;visibility:hidden;transform:translateY(14px) scale(.98);transition:opacity .2s,transform .2s,visibility .2s;}
+.chatbot-panel.is-open{opacity:1;visibility:visible;transform:translateY(0) scale(1);}
+.chatbot-header{display:flex;align-items:center;gap:11px;padding:16px 18px;background:var(--navy);color:#fff;}
+.chatbot-header-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:var(--terracotta);font-size:1.2rem;}
+.chatbot-header-copy{flex:1;min-width:0;}.chatbot-header-copy strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:1rem;}.chatbot-header-copy span{display:block;color:#c9d8e5;font-size:.74rem;margin-top:2px;}
+.chatbot-actions{display:flex;gap:5px;}.chatbot-actions button{width:34px;height:34px;border:1px solid rgba(255,255,255,.22);border-radius:9px;background:transparent;color:#fff;font-size:.95rem;}.chatbot-actions button:hover{background:rgba(255,255,255,.12);}
+.chatbot-body{display:flex;flex:1;flex-direction:column;min-height:0;padding:15px;}.chatbot-messages{flex:1;min-height:0;overflow-y:auto;padding:2px 2px 8px;scroll-behavior:smooth;}.chatbot-messages .msg{max-width:88%;margin-bottom:10px;}
+.chatbot-quick{display:flex;gap:7px;flex-wrap:wrap;padding:8px 0 10px;}.chatbot-quick .suggest-chip{text-align:left;cursor:pointer;line-height:1.3;}
+.chatbot-typing{display:inline-flex;gap:4px;align-items:center;padding:11px 14px;background:#e8eef4;border-radius:14px;border-bottom-left-radius:3px;color:var(--ink-soft);font-size:.8rem;}.chatbot-typing i{width:5px;height:5px;background:var(--ink-soft);border-radius:50%;animation:chatPulse 1s infinite ease-in-out;}.chatbot-typing i:nth-child(2){animation-delay:.15s}.chatbot-typing i:nth-child(3){animation-delay:.3s}
+@keyframes chatPulse{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.chatbot-input-row{display:flex;gap:8px;border-top:1px solid var(--line);padding-top:11px;}.chatbot-input-row textarea{min-height:44px;height:44px;max-height:100px;resize:none;padding:11px 12px;line-height:1.3;}.chatbot-input-row button{min-width:48px;border:0;border-radius:10px;background:var(--terracotta);color:#fff;font-weight:700;font-size:1.1rem;}.chatbot-input-row button:hover{background:var(--terracotta-dark);}
+@media(max-width:600px){.chatbot-launcher{right:16px;bottom:16px;padding:10px 15px 10px 11px;}.chatbot-panel{right:8px;bottom:8px;width:calc(100vw - 16px);height:calc(100vh - 16px);max-height:none;border-radius:16px;}}
+
 /* Brand studio */
 .bs-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
 .bs-controls .form-row{margin-bottom:14px;}
@@ -790,7 +807,7 @@ textarea{resize:vertical;min-height:90px;}
           <span class="open-link">View schemes →</span>
         </button>
 
-        <button class="feature-card" onclick="openModal('modal-ai')">
+        <button class="feature-card" onclick="openChatbot()">
           <span class="ficon">🤖</span>
           <h3>AI Business Assistant</h3>
           <p>Ask about pricing, exports, schemes or what to produce next.</p>
@@ -943,27 +960,27 @@ textarea{resize:vertical;min-height:90px;}
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-ai">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('modal-ai')">✕</button>
-    <span class="eyebrow">AI business assistant</span>
-    <h2>Ask anything about your business</h2>
-    <div class="chat-box" id="chatBox">
-      <div class="msg bot">Namaste! I'm your business assistant, here 24/7 in your language. Ask me about pricing, exports, schemes or what's trending in your category.</div>
-      <div class="msg user">What should I charge for my terracotta planters?</div>
-      <div class="msg bot">Similar terracotta planters from eastern India are currently selling for ₹280–450 depending on size and glaze. Given your material and finishing quality, I'd suggest starting around ₹350 and testing demand on the marketplace.</div>
+<button class="chatbot-launcher" id="chatbotLauncher" type="button" onclick="toggleChatbot(true)" aria-controls="chatbotPanel" aria-expanded="false">
+  <span class="chatbot-launcher-icon" aria-hidden="true">🤖</span><span>ODOP Assistant</span>
+</button>
+<section class="chatbot-panel" id="chatbotPanel" aria-label="ODOP Assistant" aria-hidden="true">
+  <header class="chatbot-header">
+    <div class="chatbot-header-icon" aria-hidden="true">🤖</div>
+    <div class="chatbot-header-copy"><strong>ODOP Assistant</strong><span>Your ODOP Business Guide</span></div>
+    <div class="chatbot-actions">
+      <button type="button" onclick="clearChat()" title="Clear chat" aria-label="Clear chat">↺</button>
+      <button type="button" onclick="toggleChatbot(false)" title="Close assistant" aria-label="Close assistant">✕</button>
     </div>
-    <div class="suggest-row">
-      <span class="suggest-chip" onclick="askAI(this)">Which government scheme fits me?</span>
-      <span class="suggest-chip" onclick="askAI(this)">Which countries import my product?</span>
-      <span class="suggest-chip" onclick="askAI(this)">What should I produce next season?</span>
-    </div>
-    <div class="chat-input-row" style="margin-top:14px;">
-      <input type="text" id="chatInput" placeholder="Type your question...">
-      <button onclick="sendChat()">Ask</button>
-    </div>
+  </header>
+  <div class="chatbot-body">
+    <div class="chatbot-messages" id="chatbotMessages" aria-live="polite"></div>
+    <div class="chatbot-quick" id="chatbotQuick"></div>
+    <form class="chatbot-input-row" id="chatbotForm">
+      <textarea id="chatbotInput" rows="1" placeholder="Ask about ODOP products, schemes or selling..." aria-label="Your question"></textarea>
+      <button type="submit" title="Send message" aria-label="Send message">↑</button>
+    </form>
   </div>
-</div>
+</section>
 
 <div class="modal-overlay" id="modal-brand">
   <div class="modal-box" style="max-width:860px;">
@@ -1046,7 +1063,7 @@ textarea{resize:vertical;min-height:90px;}
       <h4>Toolkit</h4>
       <ul>
         <li><a href="#" onclick="goTo('dashboard');openModal('modal-finance');return false;">Finance &amp; schemes</a></li>
-        <li><a href="#" onclick="goTo('dashboard');openModal('modal-ai');return false;">AI assistant</a></li>
+        <li><a href="#" onclick="goTo('dashboard');openChatbot();return false;">AI assistant</a></li>
         <li><a href="#" onclick="goTo('dashboard');openModal('modal-brand');return false;">Brand studio</a></li>
         <li><a href="#" onclick="goTo('dashboard');openModal('modal-logistics');return false;">Logistics tracking</a></li>
       </ul>
@@ -1274,33 +1291,52 @@ document.querySelectorAll('.modal-overlay').forEach(ov=>{
   ov.addEventListener('click',e=>{ if(e.target===ov) closeModal(ov.id); });
 });
 
-/* ---------------- AI CHAT MOCK ---------------- */
-const AI_RESPONSES = {
-  "which government scheme fits me?":"Based on a micro-enterprise profile, you likely qualify for collateral-free MSME working capital loans and your state's ODOP packaging subsidy. Open the Finance & Schemes tool for details.",
-  "which countries import my product?":"For handicraft and textile categories from your region, the UAE, Germany and the US are currently the largest importers. I can help prep export documentation when you're ready.",
-  "what should i produce next season?":"Demand for festive-season home décor and gifting items typically rises 30-40% from September. Consider adding a smaller, gift-box-friendly variant of your bestseller."
-};
-function askAI(el){
-  addMsg(el.textContent, 'user');
-  const key = el.textContent.toLowerCase();
-  setTimeout(()=>addMsg(AI_RESPONSES[key] || "Here's what I found — let me pull together the specifics for you.", 'bot'), 400);
+/* ---------------- LOCAL ODOP ASSISTANT ---------------- */
+const CHAT_WELCOME = "Namaste! 👋 I'm your ODOP Assistant. I can help you explore ODOP products, districts, schemes, pricing, exports, marketplace selling, branding and more.";
+const CHAT_QUICK_QUESTIONS = ['🗺️ Explore ODOP Products','💰 Pricing & Business Advice','🏦 Government Schemes','🌍 Export Opportunities','📦 How to Sell','🎨 Branding & Packaging'];
+const CHAT_FALLBACK = "I'm currently designed to help with ODOP products, districts, marketplace selling, pricing, schemes, exports, branding and business guidance. Try asking me about one of these.";
+let chatbotTyping = false;
+function normalizeChat(text){ return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\u0900-\u097f₹\s]/gi,' ').replace(/\s+/g,' ').trim(); }
+function hasChatWord(text, words){ return words.some(word=>text.includes(word)); }
+function chatLanguage(text){ return /[\u0900-\u097f]/.test(text) || hasChatWord(text,['kaise','kya','batao','bataiye','mera','apna','apne','milega','karu','kare','chahiye','hai','hain','mein','me','ko','ke','aur']); }
+function chatProductMatches(query){
+  return PRODUCTS.filter(product=>{
+    const haystack = normalizeChat(`${product.name} ${product.district} ${product.cat}`);
+    return query.split(' ').some(term=>term.length>2 && haystack.includes(term));
+  }).slice(0,4);
 }
-function sendChat(){
-  const input = document.getElementById('chatInput');
-  const val = input.value.trim();
-  if(!val) return;
-  addMsg(val,'user');
-  input.value='';
-  setTimeout(()=>addMsg("Good question — I'm matching this against current district and market data for you. In the full assistant, you'll get a tailored answer here.", 'bot'), 450);
+function localChatResponse(message){
+  const query = normalizeChat(message); const hindi = chatLanguage(message); const matches = chatProductMatches(query);
+  const greeting = hasChatWord(query,['hi','hello','hey','namaste','नमस्ते']);
+  if(greeting && query.split(' ').length<=4) return hindi ? 'Namaste! Main ODOP Assistant hoon. Aap products, district, schemes, pricing, export ya selling ke baare mein pooch sakte hain.' : 'Namaste! I can help with ODOP products, districts, pricing, schemes, exports, selling and branding. What would you like to explore?';
+  if(hasChatWord(query,['what is odop','odop kya','odop ka matlab','one district one product'])) return hindi ? 'ODOP ka matlab One District One Product hai. Is initiative ka focus har district se jude products ko promote aur develop karna hai.' : 'ODOP stands for One District One Product. The initiative focuses on promoting and developing products that are associated with specific districts of India.';
+  if(hasChatWord(query,['export','international buyer','foreign market','videsh','export kaise'])) return hindi ? 'Export shuru karne ke liye target international markets, export documents, product certifications aur buyers ko samajhiye. Latest requirements official government aur export authorities se verify karein.' : 'You can start by identifying suitable international markets, understanding export documentation and certifications, finding buyers, and checking the latest requirements through official government and export authorities.';
+  if(hasChatWord(query,['scheme','loan','finance','funding','subsidy','yojana','sarkari','government'])) return hindi ? 'Aap micro-enterprise credit, collateral-free MSME working capital, artisan support aur state ODOP incentive grants dekh sakte hain. Eligibility documents aur lender assessment par depend karegi. Dashboard mein Finance & Government Schemes tool kholiye.' : 'Useful starting points include micro-enterprise credit, collateral-free MSME working capital, artisan support and state ODOP incentive grants. Eligibility depends on your documents and lender assessment. Open Finance & Government Schemes in the dashboard for the indicative checker.';
+  if(hasChatWord(query,['sell','selling','marketplace','bech','online','customer','buyer'])) return hindi ? 'Apna product online bechne ke liye ODOP marketplace par strong listing banaiye, achhi product photography, clear pricing aur reliable packaging rakhiye. Domestic ke saath export markets bhi explore karein.' : 'You can explore the ODOP marketplace, build a strong product listing, use good product photography, establish pricing and packaging, and explore domestic as well as export markets.';
+  if(hasChatWord(query,['price','pricing','charge','cost','margin','rate','daam','keemat'])) return hindi ? 'Pricing mein material, labour, packaging, shipping aur marketplace margin jodiye. Similar products ke current prices se compare karke sustainable margin ke saath test price rakhiye.' : 'For pricing, add material, labour, packaging, shipping and marketplace costs, then compare with similar products. Start with a sustainable margin and test demand rather than pricing below your costs.';
+  if(hasChatWord(query,['brand','branding','logo','packaging','package','label','marketing','poster'])) return hindi ? 'Branding mein consistent naam, logo, colours, product story aur readable labels rakhiye. Packaging ko product protection, shipping aur gifting experience ke hisaab se test karein. Dashboard ka Brand Studio starting concepts de sakta hai.' : 'Build a consistent name, logo, colours, product story and readable labels. Test packaging for product protection, shipping and the gifting experience. Brand Studio in the dashboard can help you create a starting concept.';
+  if(hasChatWord(query,['logistics','shipping','delivery','courier','transport'])) return hindi ? 'Logistics ke liye safe packaging, dispatch tracking, clear delivery timelines aur domestic/export documentation ko process ka hissa banaiye. Dashboard mein Logistics Tracking & Analytics dekhiye.' : 'Plan logistics around safe packaging, dispatch tracking, clear delivery timelines and the right domestic or export documentation. The dashboard Logistics Tracking & Analytics tool can help you review shipments.';
+  if(matches.length || hasChatWord(query,['product','products','explore'])){ const products=matches.length ? matches : PRODUCTS.slice(0,4); const lines=products.map(product=>`${product.icon} ${product.name} — ${product.district} (${product.price})`).join('\n'); return hindi ? `Mere local ODOP marketplace data mein ye products mile:\n${lines}\n\nAap inhe Marketplace mein dekh sakte hain.` : `Here are products from the local ODOP marketplace data:\n${lines}\n\nYou can view these products in Marketplace.`; }
+  if(hasChatWord(query,['help','what can you do','madad','kya pooch'])) return 'You can ask me about a district or product, marketplace selling, pricing, schemes, finance, exports, branding, packaging or logistics.';
+  return CHAT_FALLBACK;
 }
-function addMsg(text, cls){
-  const box = document.getElementById('chatBox');
-  const div = document.createElement('div');
-  div.className = 'msg '+cls;
-  div.textContent = text;
-  box.appendChild(div);
-  box.scrollTop = box.scrollHeight;
+function renderChatQuickQuestions(questions=CHAT_QUICK_QUESTIONS){
+  const quick=document.getElementById('chatbotQuick');
+  quick.innerHTML=questions.map(question=>`<button type="button" class="suggest-chip" data-question="${question}">${question}</button>`).join('');
+  quick.querySelectorAll('[data-question]').forEach(button=>button.addEventListener('click',()=>sendChatMessage(button.dataset.question)));
 }
+function appendChatMessage(text, role){ const box=document.getElementById('chatbotMessages'); const message=document.createElement('div'); message.className=`msg ${role}`; message.style.whiteSpace='pre-line'; message.textContent=text; box.appendChild(message); box.scrollTop=box.scrollHeight; }
+function showChatTyping(){ const box=document.getElementById('chatbotMessages'); const typing=document.createElement('div'); typing.className='chatbot-typing'; typing.id='chatbotTyping'; typing.innerHTML='<i></i><i></i><i></i>'; box.appendChild(typing); box.scrollTop=box.scrollHeight; }
+function sendChatMessage(message){
+  const value=String(message||'').trim(); if(!value||chatbotTyping) return;
+  appendChatMessage(value.replace(/^[^a-zA-Z0-9\u0900-\u097f]+\s*/,''),'user'); document.getElementById('chatbotInput').value=''; chatbotTyping=true; showChatTyping();
+  window.setTimeout(()=>{ document.getElementById('chatbotTyping')?.remove(); const response=localChatResponse(value); appendChatMessage(response,'bot'); if(response===CHAT_FALLBACK) renderChatQuickQuestions(CHAT_QUICK_QUESTIONS.slice(0,4)); chatbotTyping=false; },450);
+}
+function clearChat(){ document.getElementById('chatbotMessages').innerHTML=''; appendChatMessage(CHAT_WELCOME,'bot'); renderChatQuickQuestions(); }
+function toggleChatbot(open){ const panel=document.getElementById('chatbotPanel'); const launcher=document.getElementById('chatbotLauncher'); panel.classList.toggle('is-open',open); panel.setAttribute('aria-hidden',String(!open)); launcher.setAttribute('aria-expanded',String(open)); if(open){ clearChat(); window.setTimeout(()=>document.getElementById('chatbotInput').focus(),100); } }
+function openChatbot(){ toggleChatbot(true); }
+document.getElementById('chatbotForm').addEventListener('submit',event=>{ event.preventDefault(); sendChatMessage(document.getElementById('chatbotInput').value); });
+document.getElementById('chatbotInput').addEventListener('keydown',event=>{ if(event.key==='Enter'&&!event.shiftKey){ event.preventDefault(); sendChatMessage(event.target.value); } });
 
 /* ---------------- AI BRAND STUDIO ---------------- */
 document.querySelectorAll('#bsMode .chip').forEach(chip=>{
